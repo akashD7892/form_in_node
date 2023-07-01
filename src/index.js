@@ -39,28 +39,32 @@ app.post('/customer', async (req, resp) => {
     else if (id == "admin" && password == "admin") {
 
         // to get the latest updated value
-        let data1 = await Product1.find().sort({ _id: -1 }).limit(1);
-        let data2 = await Product2.find().sort({ _id: -1 }).limit(1);
-        //let qty = data1.quantity + data2.quantity;
-        const [{ quantity: qty1, weight: w1, box_count: bc1 }] = data1;
-        const [{ quantity: qty2, weight: w2, box_count: bc2 }] = data2;
-        // let value = parseInt(qty1) + parseInt(qty2);
+        try {
+            let data1 = await Product1.find().sort({ _id: -1 }).limit(1);
+            let data2 = await Product2.find().sort({ _id: -1 }).limit(1);
+            //let qty = data1.quantity + data2.quantity;
+            const [{ quantity: qty1, weight: w1, box_count: bc1 }] = data1;
+            const [{ quantity: qty2, weight: w2, box_count: bc2 }] = data2;
+            // let value = parseInt(qty1) + parseInt(qty2);
 
-        let qt = qty1 + qty2;
-        let wt = w1 + w2;
-        let bc = bc1 + bc2;
-        console.log(qt, wt, bc);
+            let qt = qty1 + qty2;
+            let wt = w1 + w2;
+            let bc = bc1 + bc2;
+            console.log(qt, wt, bc);
 
-        const data = [
-            ["Item", "Cust1", "Cust2", "Tot"],
-            ["qty", qty1, qty2, qt],
-            ["wgt", w1, w2, wt],
-            ["box", bc1, bc2, bc]
-        ]
+            const data = [
+                ["Item", "Cust1", "Cust2", "Tot"],
+                ["qty", qty1, qty2, qt],
+                ["wgt", w1, w2, wt],
+                ["box", bc1, bc2, bc]
+            ]
 
-        let x = table.table(data);
-        resp.send(data);
-        console.log(x)
+            let x = table.table(data);
+            resp.send(data);
+            console.log(x)
+        } catch (error) {
+            resp.send("Sorry for inconvenience")
+        }
     }
     else
         resp.send("Wrong password or name")
