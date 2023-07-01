@@ -1,0 +1,19 @@
+{
+  "name": "akash",
+  "version": "1.0.0",
+  "description": "login_page",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "npm i"
+  },
+  "author": "akash",
+  "license": "ISC",
+  "dependencies": {
+    "ejs": "^3.1.9",
+    "express": "^4.18.2",
+    "mongoose": "^7.3.1",
+    "nodemon": "^2.0.22",
+    "table": "^6.8.1"
+  }
+}
