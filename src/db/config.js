@@ -1,2 +1,12 @@
 const mongoose = require('mongoose')
-mongoose.connect("mongodb://127.0.0.1:27017/form")
+
+const mongoUri = "mongodb+srv://erakash:akashD7892@cluster0.wgdzjmo.mongodb.net/test?retryWrites=true&w=majority";
+
+
+mongoose.connect(mongoUri, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+    connectTimeoutMS: 30000
+});
+
+
